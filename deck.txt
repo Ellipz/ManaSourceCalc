@@ -1,0 +1,36 @@
+About
+Name GB insidious v4.2
+
+Deck
+1 Forest
+1 Swamp
+1 Deathrite Shaman
+1 Llanowar Wastes
+4 Overgrown Tomb
+3 Scrapheap Scrounger
+4 Blooming Marsh
+4 Stitcher's Supplier
+3 Necrotic Wound
+4 Priest of Forgotten Gods
+1 Castle Locthwain
+2 Bala Ged Recovery
+4 Darkbore Pathway
+1 Hive of the Eye Tyrant
+2 Boseiju, Who Endures
+1 Takenuma, Abandoned Mire
+4 Tyvar, Jubilant Brawler
+2 Agatha's Soul Cauldron
+4 Rubblebelt Maverick
+4 Insidious Roots
+1 Underground Mortuary
+4 Forsaken Miner
+4 Overlord of the Balemurk
+
+Sideboard
+4 Thoughtseize
+1 Necrotic Wound
+2 Haywire Mite
+1 Deathrite Shaman
+2 Damping Sphere
+2 Feed the Swarm
+3 Glistening Deluge
