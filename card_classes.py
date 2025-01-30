@@ -4,8 +4,9 @@ from typing import List
 @dataclass
 class Spell:
     name: str
-    mana_cost: str  # Mana symbols (e.g., "{B/G}")
+    mana_cost: str
     quantity: int
+    is_mdfc: bool  
 
 @dataclass
 class Land:
@@ -13,3 +14,4 @@ class Land:
     colors: List[str]
     enters_tapped: bool
     quantity: int
+    is_mdfc: bool

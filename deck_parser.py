@@ -1,5 +1,6 @@
 import requests
 import time
+import re
 from typing import Tuple, List
 from card_classes import Spell, Land
 
@@ -30,44 +31,137 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                 continue
             try:
                 quantity = int(parts[0])
-                card_name = " ".join(parts[1:])
+                input_card_name = " ".join(parts[1:])
             except ValueError:
                 continue
 
-            response = requests.get(f"{SCRYFALL_API}{card_name}")
+            response = requests.get(f"{SCRYFALL_API}{input_card_name}")
             time.sleep(0.1)
 
             if response.status_code != 200:
-                print(f"Error fetching {card_name}: {response.text}")
+                print(f"Error fetching {input_card_name}: {response.text}")
                 continue
 
             card_data = response.json()
-            is_land = False
-            oracle_text = ""
-            colors = []
-            mana_cost = ""
+            is_mdfc = "card_faces" in card_data
 
-            if "card_faces" in card_data:
+            if is_mdfc:
+                spell_face = None
+                land_faces = []
                 for face in card_data["card_faces"]:
                     if "Land" in face["type_line"]:
-                        is_land = True
-                        oracle_text = face.get("oracle_text", "")
-                        colors = face.get("produced_mana", [])
-                        card_name = face["name"]
-                        break
+                        land_faces.append(face)
                     else:
-                        # Get mana cost from the spell face
-                        mana_cost = face.get("mana_cost", "")
-            else:
-                is_land = "Land" in card_data.get("type_line", "")
-                oracle_text = card_data.get("oracle_text", "")
-                colors = card_data.get("produced_mana", [])
-                mana_cost = card_data.get("mana_cost", "")
+                        spell_face = face
 
-            if is_land:
-                enters_tapped = "enters the battlefield tapped" in oracle_text.lower()
-                lands.append(Land(card_name, colors, enters_tapped, quantity))
-            else:
-                spells.append(Spell(card_name, mana_cost, quantity))
+                # Handle Spell + Land MDFC
+                if spell_face and land_faces:
+                    # Add Spell (marked as MDFC)
+                    spells.append(Spell(
+                        name=spell_face["name"],
+                        mana_cost=spell_face.get("mana_cost", ""),
+                        quantity=quantity,
+                        is_mdfc=True
+                    ))
+
+                    # Add Land(s)
+                    for land_face in land_faces:
+                        oracle_text = land_face.get("oracle_text", "")
+                        
+                        # Extract colors
+                        colors = land_face.get("produced_mana", [])
+                        if not colors:
+                            mana_symbols = re.findall(r"{([WUBRG])}", oracle_text)
+                            colors = list(set(mana_symbols))
+                        
+                        # Determine tapped status
+                        oracle_text_lower = oracle_text.lower()
+                        has_tapped_phrase = (
+                            "enters the battlefield tapped" in oracle_text_lower
+                            or "enters tapped" in oracle_text_lower
+                        )
+                        has_conditional = any(
+                            phrase in oracle_text_lower
+                            for phrase in ["unless", "you may", "if you don't"]
+                        )
+                        enters_tapped = has_tapped_phrase and not has_conditional
+
+                        lands.append(Land(
+                            name=land_face["name"],
+                            colors=colors,
+                            enters_tapped=enters_tapped,
+                            quantity=quantity,
+                            is_mdfc=True
+                        ))
+
+                # Handle Land + Land MDFC
+                elif land_faces and not spell_face:
+                    combined_name = " // ".join([face["name"] for face in card_data["card_faces"]])
+                    colors = []
+                    enters_tapped = False
+                    
+                    for face in card_data["card_faces"]:
+                        oracle_text = face.get("oracle_text", "")
+                        face_colors = face.get("produced_mana", [])
+                        if not face_colors:
+                            face_colors = re.findall(r"{([WUBRG])}", oracle_text)
+                        colors.extend(face_colors)
+                        
+                        # Tapped check with conditional logic
+                        oracle_text_lower = oracle_text.lower()
+                        has_tapped_phrase = (
+                            "enters the battlefield tapped" in oracle_text_lower
+                            or "enters tapped" in oracle_text_lower
+                        )
+                        has_conditional = any(
+                            phrase in oracle_text_lower
+                            for phrase in ["unless", "you may", "if you don't"]
+                        )
+                        if has_tapped_phrase and not has_conditional:
+                            enters_tapped = True
+                    
+                    lands.append(Land(
+                        name=combined_name,
+                        colors=list(set(colors)),
+                        enters_tapped=enters_tapped,
+                        quantity=quantity,
+                        is_mdfc=True
+                    ))
+
+            else:  # Regular cards
+                if "Land" in card_data.get("type_line", ""):
+                    oracle_text = card_data.get("oracle_text", "")
+                    colors = card_data.get("produced_mana", [])
+                    
+                    if not colors:
+                        mana_symbols = re.findall(r"{([WUBRG])}", oracle_text)
+                        colors = list(set(mana_symbols))
+                    
+                    # Tapped check with conditional logic
+                    oracle_text_lower = oracle_text.lower()
+                    has_tapped_phrase = (
+                        "enters the battlefield tapped" in oracle_text_lower
+                        or "enters tapped" in oracle_text_lower
+                    )
+                    has_conditional = any(
+                        phrase in oracle_text_lower
+                        for phrase in ["unless", "you may", "if you don't"]
+                    )
+                    enters_tapped = has_tapped_phrase and not has_conditional
+
+                    lands.append(Land(
+                        name=input_card_name,
+                        colors=colors,
+                        enters_tapped=enters_tapped,
+                        quantity=quantity,
+                        is_mdfc=False
+                    ))
+                else:
+                    spells.append(Spell(
+                        name=input_card_name,
+                        mana_cost=card_data.get("mana_cost", ""),
+                        quantity=quantity,
+                        is_mdfc=False
+                    ))
 
     return spells, lands
