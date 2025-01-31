@@ -1,0 +1,17 @@
+Mana Base Analysis Report - 2025-01-31 23:58:14
+Total Lands: 24
+Color Sources:
+- White: 16
+- Blue: 19
+- Black: 1
+- Red: 1
+- Green: 1
+
+Casting Probabilities:
+Omniscience (Turn 10): 3.8%
+Chart a Course (Turn 2): 95.7%
+Fallaji Archaeologist (Turn 2): 96.0%
+Ephara's Dispersal (Turn 3): 88.9%
+Moment of Truth (Turn 2): 95.9%
+Abuelo's Awakening (Turn 4): 71.9%
+Confounding Riddle (Turn 3): 88.5%

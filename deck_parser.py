@@ -54,9 +54,7 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                     else:
                         spell_face = face
 
-                # Handle Spell + Land MDFC
                 if spell_face and land_faces:
-                    # Add Spell (marked as MDFC)
                     spells.append(Spell(
                         name=spell_face["name"],
                         mana_cost=spell_face.get("mana_cost", ""),
@@ -64,17 +62,13 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                         is_mdfc=True
                     ))
 
-                    # Add Land(s)
                     for land_face in land_faces:
                         oracle_text = land_face.get("oracle_text", "")
-                        
-                        # Extract colors
                         colors = land_face.get("produced_mana", [])
                         if not colors:
                             mana_symbols = re.findall(r"{([WUBRG])}", oracle_text)
                             colors = list(set(mana_symbols))
                         
-                        # Determine tapped status
                         oracle_text_lower = oracle_text.lower()
                         has_tapped_phrase = (
                             "enters the battlefield tapped" in oracle_text_lower
@@ -94,7 +88,6 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                             is_mdfc=True
                         ))
 
-                # Handle Land + Land MDFC
                 elif land_faces and not spell_face:
                     combined_name = " // ".join([face["name"] for face in card_data["card_faces"]])
                     colors = []
@@ -107,7 +100,6 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                             face_colors = re.findall(r"{([WUBRG])}", oracle_text)
                         colors.extend(face_colors)
                         
-                        # Tapped check with conditional logic
                         oracle_text_lower = oracle_text.lower()
                         has_tapped_phrase = (
                             "enters the battlefield tapped" in oracle_text_lower
@@ -128,7 +120,7 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                         is_mdfc=True
                     ))
 
-            else:  # Regular cards
+            else:
                 if "Land" in card_data.get("type_line", ""):
                     oracle_text = card_data.get("oracle_text", "")
                     colors = card_data.get("produced_mana", [])
@@ -137,7 +129,6 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                         mana_symbols = re.findall(r"{([WUBRG])}", oracle_text)
                         colors = list(set(mana_symbols))
                     
-                    # Tapped check with conditional logic
                     oracle_text_lower = oracle_text.lower()
                     has_tapped_phrase = (
                         "enters the battlefield tapped" in oracle_text_lower
