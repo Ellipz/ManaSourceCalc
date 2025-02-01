@@ -1,32 +1,43 @@
 About
-Name Omniscience Combo
+Name Draft Deck 01.02.2025
 
 Deck
-1 Plains
-4 Island
-4 Omniscience
-4 Adarkar Wastes
-3 Seachrome Coast
-4 Chart a Course
-2 Blast Zone
-2 Fabled Passage
-4 Fallaji Archaeologist
-4 Ephara's Dispersal
-4 Invasion of Arcavios
-4 Moment of Truth
-4 Picklock Prankster
-4 Abuelo's Awakening
-4 Confounding Riddle
-4 Meticulous Archive
-1 Conduit Pylons
-3 Floodfarm Verge
+1 Outcaster Trailblazer (OTJ) 173
+1 Gold Rush (OTJ) 166
+1 Longhorn Sharpshooter (OTJ) 132
+2 Shackle Slinger (OTJ) 65
+1 Hypothesizzle (OTP) 48
+1 Cunning Coyote (OTJ) 118
+1 Savage Smash (OTP) 53
+3 Razzle-Dazzler (OTJ) 63
+1 Botanical Sanctum (OTJ) 267
+1 Nimble Brigand (OTJ) 58
+1 Ionize (OTP) 49
+1 Slickshot Lockpicker (OTJ) 67
+2 This Town Ain't Big Enough (OTJ) 74
+1 Skewer the Critics (OTP) 26
+1 Slick Sequence (OTJ) 233
+1 Visage Bandit (OTJ) 76
+1 Repulse (OTP) 13
+1 Bristlebud Farmer (BIG) 17
+1 Loan Shark (OTJ) 55
+1 Explosive Derailment (OTJ) 122
+16 Mountain (USG) 343
 
 Sideboard
-2 Negate
-1 Defabricate
-1 Season of Weaving
-2 Exorcise
-1 Unnerving Grasp
-3 Grand Abolisher
-3 Temporary Lockdown
-2 Minor Misstep
+1 Take for a Ride (OTJ) 148
+1 Harrier Strix (OTJ) 52
+1 Rodeo Pyromancers (OTJ) 143
+1 Wrangler of the Damned (OTJ) 238
+1 Boneyard Desecrator (OTJ) 81
+1 Scorching Shot (OTJ) 145
+1 Jem Lightfoote, Sky Explorer (OTJ) 209
+1 Jailbreak Scheme (OTJ) 53
+2 Plan the Heist (OTJ) 62
+1 Iron-Fist Pulverizer (OTJ) 131
+1 Mindslaver (OTP) 63
+1 The Key to the Vault (OTJ) 54
+1 Take the Fall (OTJ) 73
+1 Essence Capture (OTP) 10
+1 Slickshot Vault-Buster (OTJ) 68
+1 Quilled Charger (OTJ) 139

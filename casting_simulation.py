@@ -88,7 +88,7 @@ class CastingSimulator:
         return total_lands_played, available_mana
 
     # CHANGED: Updated casting probability calculation
-    def calculate_cast_probability(self, spell: Spell, turn: int, simulations: int = 10000) -> float:
+    def calculate_cast_probability(self, spell: Spell, turn: int, simulations: int = 100000) -> float:
         requirements = self._parse_mana_cost(spell.mana_cost)
         successes = 0
         

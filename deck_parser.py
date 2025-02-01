@@ -1,6 +1,6 @@
+import re
 import requests
 import time
-import re
 from typing import Tuple, List
 from card_classes import Spell, Land
 
@@ -26,14 +26,18 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
             if not reading_deck:
                 continue
 
-            parts = line.split()
-            if not parts:
-                continue
-            try:
+            # New parsing logic to support MTGA format
+            match = re.match(r"^(\d+)\s+(.*?)\s+\(\w+\)\s+\d+$", line)
+            if not match:
+                # Fallback for cards without set info
+                parts = line.split()
+                if len(parts) < 2:
+                    continue
                 quantity = int(parts[0])
                 input_card_name = " ".join(parts[1:])
-            except ValueError:
-                continue
+            else:
+                quantity = int(match.group(1))
+                input_card_name = match.group(2).strip()
 
             response = requests.get(f"{SCRYFALL_API}{input_card_name}")
             time.sleep(0.1)

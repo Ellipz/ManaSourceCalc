@@ -1,17 +1,29 @@
-Mana Base Analysis Report - 2025-01-31 23:58:14
-Total Lands: 24
+Mana Base Analysis Report - 2025-02-01 18:22:27
+Total Lands: 17
 Color Sources:
-- White: 16
-- Blue: 19
-- Black: 1
-- Red: 1
+- White: 0
+- Blue: 1
+- Black: 0
+- Red: 16
 - Green: 1
 
 Casting Probabilities:
-Omniscience (Turn 10): 3.8%
-Chart a Course (Turn 2): 95.7%
-Fallaji Archaeologist (Turn 2): 96.0%
-Ephara's Dispersal (Turn 3): 88.9%
-Moment of Truth (Turn 2): 95.9%
-Abuelo's Awakening (Turn 4): 71.9%
-Confounding Riddle (Turn 3): 88.5%
+Outcaster Trailblazer (Turn 3): 12.5%
+Gold Rush (Turn 2): 11.0%
+Longhorn Sharpshooter (Turn 3): 71.2%
+Shackle Slinger (Turn 3): 12.6%
+Hypothesizzle (Turn 5): 7.2%
+Cunning Coyote (Turn 2): 93.9%
+Savage Smash (Turn 3): 12.5%
+Razzle-Dazzler (Turn 2): 10.9%
+Nimble Brigand (Turn 3): 12.6%
+Ionize (Turn 3): 12.6%
+Slickshot Lockpicker (Turn 3): 12.6%
+This Town Ain't Big Enough (Turn 5): 7.3%
+Skewer the Critics (Turn 3): 71.6%
+Slick Sequence (Turn 2): 10.9%
+Visage Bandit (Turn 4): 10.6%
+Repulse (Turn 3): 12.4%
+Bristlebud Farmer (Turn 4): 0.0%
+Loan Shark (Turn 4): 10.5%
+Explosive Derailment (Turn 1): 88.3%
