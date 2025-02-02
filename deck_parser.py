@@ -26,18 +26,18 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
             if not reading_deck:
                 continue
 
-            # New parsing logic to support MTGA format
-            match = re.match(r"^(\d+)\s+(.*?)\s+\(\w+\)\s+\d+$", line)
+            # Handle MTGA and Untapped.gg formats
+            # Format 1: "1 Outcaster Trailblazer (OTJ) 173"
+            # Format 2: "6 Island"
+            match = re.match(r"^(\d+)\s+(.*?)(?:\s+\(\w+\)\s+\d+)?$", line)
             if not match:
-                # Fallback for cards without set info
-                parts = line.split()
-                if len(parts) < 2:
-                    continue
-                quantity = int(parts[0])
-                input_card_name = " ".join(parts[1:])
-            else:
-                quantity = int(match.group(1))
-                input_card_name = match.group(2).strip()
+                continue
+
+            quantity = int(match.group(1))
+            input_card_name = match.group(2).strip()
+
+            # Remove any remaining parentheticals
+            input_card_name = re.sub(r"\s*\(\w+\)$", "", input_card_name)
 
             response = requests.get(f"{SCRYFALL_API}{input_card_name}")
             time.sleep(0.1)
@@ -70,7 +70,7 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                         oracle_text = land_face.get("oracle_text", "")
                         colors = land_face.get("produced_mana", [])
                         if not colors:
-                            mana_symbols = re.findall(r"{([WUBRG])}", oracle_text)
+                            mana_symbols = re.findall(r"{([WUBRGC])}", oracle_text)
                             colors = list(set(mana_symbols))
                         
                         oracle_text_lower = oracle_text.lower()
@@ -101,7 +101,7 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                         oracle_text = face.get("oracle_text", "")
                         face_colors = face.get("produced_mana", [])
                         if not face_colors:
-                            face_colors = re.findall(r"{([WUBRG])}", oracle_text)
+                            face_colors = re.findall(r"{([WUBRGC])}", oracle_text)
                         colors.extend(face_colors)
                         
                         oracle_text_lower = oracle_text.lower()
@@ -130,7 +130,7 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
                     colors = card_data.get("produced_mana", [])
                     
                     if not colors:
-                        mana_symbols = re.findall(r"{([WUBRG])}", oracle_text)
+                        mana_symbols = re.findall(r"{([WUBRGC])}", oracle_text)
                         colors = list(set(mana_symbols))
                     
                     oracle_text_lower = oracle_text.lower()

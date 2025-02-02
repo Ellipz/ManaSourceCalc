@@ -1,29 +1,32 @@
-Mana Base Analysis Report - 2025-02-01 18:22:27
+Mana Base Analysis Report - 2025-02-02 23:39:04
 Total Lands: 17
 Color Sources:
-- White: 0
-- Blue: 1
-- Black: 0
-- Red: 16
-- Green: 1
+- White: 9
+- Blue: 0
+- Black: 2
+- Red: 0
+- Green: 9
 
 Casting Probabilities:
-Outcaster Trailblazer (Turn 3): 12.5%
-Gold Rush (Turn 2): 11.0%
-Longhorn Sharpshooter (Turn 3): 71.2%
-Shackle Slinger (Turn 3): 12.6%
-Hypothesizzle (Turn 5): 7.2%
-Cunning Coyote (Turn 2): 93.9%
-Savage Smash (Turn 3): 12.5%
-Razzle-Dazzler (Turn 2): 10.9%
-Nimble Brigand (Turn 3): 12.6%
-Ionize (Turn 3): 12.6%
-Slickshot Lockpicker (Turn 3): 12.6%
-This Town Ain't Big Enough (Turn 5): 7.3%
-Skewer the Critics (Turn 3): 71.6%
-Slick Sequence (Turn 2): 10.9%
-Visage Bandit (Turn 4): 10.6%
-Repulse (Turn 3): 12.4%
-Bristlebud Farmer (Turn 4): 0.0%
-Loan Shark (Turn 4): 10.5%
-Explosive Derailment (Turn 1): 88.3%
+Pariah (Turn 3): 65.4%
+Archangel of Tithes (Turn 4): 15.0%
+Back for More (Turn 6): 6.8%
+Snakeskin Veil (Turn 1): 49.8%
+Pest Infestation (Turn 1): 49.7%
+Bounding Felidar (Turn 6): 11.7%
+Fortune, Loyal Steed (Turn 3): 65.3%
+Mystical Tether (Turn 3): 65.4%
+Steer Clear (Turn 1): 49.6%
+Trained Arynx (Turn 2): 74.4%
+Bristlepack Sentry (Turn 2): 74.7%
+Cactarantula (Turn 6): 11.1%
+Dance of the Tumbleweeds (Turn 2): 74.5%
+Drover Grizzly (Turn 3): 65.2%
+Giant Beaver (Turn 4): 43.8%
+Goldvein Hydra (Turn 1): 49.9%
+Rambling Possum (Turn 3): 65.1%
+Reach for the Sky (Turn 4): 43.6%
+Spinewoods Paladin (Turn 5): 24.0%
+Throw from the Saddle (Turn 2): 74.4%
+Redrock Sentinel (Turn 3): 71.1%
+Silver Deputy (Turn 2): 93.9%
