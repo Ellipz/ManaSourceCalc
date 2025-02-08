@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MTG Mana Base Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .chart-container { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <h1>Mana Base Analysis Dashboard</h1>
+    
+    <div class="chart-container">
+        <div id="manaChart"></div>
+    </div>
+    
+    <div class="chart-container">
+        <div id="castingChart"></div>
+    </div>
+
+    <h2>Detailed Probabilities</h2>
+    <table>
+        <tr>
+            <th>Spell</th>
+            <th>Target Turn</th>
+            <th>Success Probability</th>
+        </tr>
+        {% for name, turn, prob in casting_probs %}
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ turn }}</td>
+            <td>{{ "%.1f"|format(prob*100) }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        // Mana Sources Pie Chart
+        Plotly.newPlot('manaChart', [{
+            values: {{ charts.mana_sources.data_values|tojson }},
+            labels: {{ charts.mana_sources.data_labels|tojson }},
+            type: 'pie',
+            textinfo: 'percent+label',
+            hole: .4
+        }], {
+            title: '{{ charts.mana_sources.title }}'
+        });
+
+        // Casting Probabilities Bar Chart
+        Plotly.newPlot('castingChart', [{
+            x: {{ charts.casting_probs.spell_names|tojson }},
+            y: {{ charts.casting_probs.probabilities|tojson }},
+            type: 'bar',
+            marker: {
+                color: 'rgb(55, 83, 109)'
+            }
+        }], {
+            title: '{{ charts.casting_probs.title }}',
+            yaxis: {
+                title: 'Success Probability (%)',
+                range: [0, 100]
+            }
+        });
+    </script>
+</body>
+</html>

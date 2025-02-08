@@ -26,7 +26,7 @@ def parse_deck(file_path: str) -> Tuple[List[Spell], List[Land]]:
             if not reading_deck:
                 continue
 
-            # Handle MTGA and Untapped.gg formats
+            # NEW: Handle both formats
             # Format 1: "1 Outcaster Trailblazer (OTJ) 173"
             # Format 2: "6 Island"
             match = re.match(r"^(\d+)\s+(.*?)(?:\s+\(\w+\)\s+\d+)?$", line)

@@ -1,4 +1,4 @@
-Mana Base Analysis Report - 2025-02-02 23:39:04
+Mana Base Analysis Report - 2025-02-08 20:45:20
 Total Lands: 17
 Color Sources:
 - White: 9
@@ -10,23 +10,23 @@ Color Sources:
 Casting Probabilities:
 Pariah (Turn 3): 65.4%
 Archangel of Tithes (Turn 4): 15.0%
-Back for More (Turn 6): 6.8%
-Snakeskin Veil (Turn 1): 49.8%
-Pest Infestation (Turn 1): 49.7%
+Back for More (Turn 6): 6.9%
+Snakeskin Veil (Turn 1): 49.5%
+Pest Infestation (Turn 1): 49.8%
 Bounding Felidar (Turn 6): 11.7%
 Fortune, Loyal Steed (Turn 3): 65.3%
-Mystical Tether (Turn 3): 65.4%
-Steer Clear (Turn 1): 49.6%
+Mystical Tether (Turn 3): 65.2%
+Steer Clear (Turn 1): 49.9%
 Trained Arynx (Turn 2): 74.4%
-Bristlepack Sentry (Turn 2): 74.7%
-Cactarantula (Turn 6): 11.1%
-Dance of the Tumbleweeds (Turn 2): 74.5%
+Bristlepack Sentry (Turn 2): 74.6%
+Cactarantula (Turn 6): 11.3%
+Dance of the Tumbleweeds (Turn 2): 74.6%
 Drover Grizzly (Turn 3): 65.2%
-Giant Beaver (Turn 4): 43.8%
-Goldvein Hydra (Turn 1): 49.9%
-Rambling Possum (Turn 3): 65.1%
-Reach for the Sky (Turn 4): 43.6%
-Spinewoods Paladin (Turn 5): 24.0%
-Throw from the Saddle (Turn 2): 74.4%
-Redrock Sentinel (Turn 3): 71.1%
-Silver Deputy (Turn 2): 93.9%
+Giant Beaver (Turn 4): 43.6%
+Goldvein Hydra (Turn 1): 49.6%
+Rambling Possum (Turn 3): 65.2%
+Reach for the Sky (Turn 4): 43.7%
+Spinewoods Paladin (Turn 5): 24.6%
+Throw from the Saddle (Turn 2): 74.5%
+Redrock Sentinel (Turn 3): 71.2%
+Silver Deputy (Turn 2): 93.7%

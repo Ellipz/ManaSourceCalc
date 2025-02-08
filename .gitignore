@@ -4,3 +4,4 @@ __pycache__/
 .env
 ManaSimResults.txt
 .mtg-env/
+mtg-env/

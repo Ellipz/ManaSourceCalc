@@ -17,17 +17,10 @@ def print_deck_summary(spells: List[Spell], lands: List[Land]):
         print(f"{land.quantity}x {land.name}{mdfc_note}: {land.colors}, {tapped_status}")
 
 def main():
-    # Parse deck
     spells, lands = parse_deck("deck.txt")
-    
-    # Print summary
     print_deck_summary(spells, lands)
-    
-    # Run simulation
     simulator = CastingSimulator(spells, lands)
     analysis_results = simulator.analyze_deck()
-    
-    # Print analysis
     print("\n=== Casting Analysis ===")
     for name, turn, prob in analysis_results:
         print(f"{name} (Turn {turn}): {prob:.1%}")
